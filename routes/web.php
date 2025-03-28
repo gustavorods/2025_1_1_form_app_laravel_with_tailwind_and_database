@@ -21,5 +21,5 @@ Route::post('/cadastrar-produto', function(Request $request) {
         'estoque' => $request->quantity 
     ]);
 
-    echo "Produto criado com sucesso!";
+    return redirect('/'); 
 });
