@@ -5,19 +5,22 @@ use App\Models\Produto;
 use App\Models\Cliente; 
 use Illuminate\Http\Request;
 
+// Home
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Products form
 Route::get('/form', function () {
     return view('form');
 });
 
+// Clients form
 Route::get('/form_client', function () {
     return view('form_client');
 });
 
-
+// Products Register 
 Route::post('/cadastrar-produto', function(Request $request) {
     //dd($request->all());
 
@@ -30,6 +33,7 @@ Route::post('/cadastrar-produto', function(Request $request) {
     return redirect('/'); 
 });
 
+// clients Register 
 Route::post('/cadastrar-cliente', function(Request $request) {
     //dd($request->all());
 
@@ -43,3 +47,11 @@ Route::post('/cadastrar-cliente', function(Request $request) {
 
     return redirect('/'); 
 });
+
+// list products 
+Route::get('/list-product/{id}', function($id) {
+    //dd(Produto::find($id)); //debug and die
+    $product = Produto::find($id);
+    return view('list_products', ['produto' => $product]);
+});
+
